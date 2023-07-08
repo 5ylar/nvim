@@ -1,4 +1,8 @@
 return function(use)
+    use {
+        'editorconfig/editorconfig-vim'
+    }
+
     -------
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -90,7 +94,10 @@ return function(use)
         vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
         vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
         vim.keymap.set("n", "<leader>lrn", function() vim.lsp.buf.rename() end, opts)
-        vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+        vim.keymap.set("i", "<C-a>", function() vim.lsp.buf.signature_help() end, opts)
+        vim.keymap.set('n', '<space>f', function()
+            vim.lsp.buf.format { async = true }
+        end, opts)
     end)
 
     lsp.setup()

@@ -5,6 +5,9 @@ return function(use)
     vim.keymap.set("n", "<leader>g", ":Git<CR>")
 
     -------
+    use("rbong/vim-flog")
+
+    -------
     use {
         "lewis6991/gitsigns.nvim",
     }

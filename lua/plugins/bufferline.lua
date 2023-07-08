@@ -34,27 +34,31 @@ return function(use)
                 'diagnostics',
             },
             lualine_c = {
-                -- 'filename',
                 {
-                    'buffers',
+                    'filename',
+                    path = 4,
                 },
                 -- {
-                --     function()
-                --         local unsaved_count = 0
-                --
-                --         for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-                --             if vim.api.nvim_buf_get_option(buf, 'modified') then
-                --                 unsaved_count = unsaved_count + 1
-                --             end
-                --         end
-                --
-                --         if unsaved_count == 0 then
-                --             return ''
-                --         end
-                --
-                --         return "!" .. unsaved_count
-                --     end,
+                --     'buffers',
+                --     show_filename_only = false,
                 -- },
+                {
+                    function()
+                        local unsaved_count = 0
+
+                        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+                            if vim.api.nvim_buf_get_option(buf, 'modified') then
+                                unsaved_count = unsaved_count + 1
+                            end
+                        end
+
+                        if unsaved_count == 0 then
+                            return ''
+                        end
+
+                        return "!" .. unsaved_count
+                    end,
+                },
             },
             lualine_x = { 'encoding', 'fileformat', 'filetype' },
             lualine_y = { 'progress' },

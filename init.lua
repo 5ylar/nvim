@@ -14,7 +14,7 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.autoindent = true
 
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 vim.opt.swapfile = false
 vim.opt.backup = true
@@ -47,7 +47,11 @@ vim.opt.encoding = "UTF-8"
 
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+-- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+
+vim.keymap.set("n", "Z", function()
+    print "test"
+end)
 
 vim.keymap.set("n", "r", "\"_r")
 vim.keymap.set("n", "c", "\"_c")
@@ -74,6 +78,12 @@ vim.keymap.set("n", "<leader>O", "O<Esc>")
 
 -- vim.keymap.set("x", "<leader>p", [["_dP]])
 -- vim.keymap.set("x", "<leader>p", [["_dP]])
+--
+
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -92,6 +102,7 @@ vim.cmd [[hi DiffAdd      gui=none    guifg=NONE          guibg=#bada9f]]
 vim.cmd [[hi DiffChange   gui=none    guifg=NONE          guibg=#e5d5ac]]
 vim.cmd [[hi DiffDelete   gui=bold    guifg=#ff8080       guibg=#ffb0b0]]
 vim.cmd [[hi DiffText     gui=none    guifg=NONE          guibg=#8cbee2]]
+vim.cmd [[hi TreesitterContextBottom gui=none guibg=purple]]
 
 -- vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
 vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white ]]
@@ -116,6 +127,7 @@ return require('packer').startup(function(use)
 
     -------
 
+    require('plugins/quickfix')(use)
     require('plugins/bufferline')(use)
     require('plugins/comment')(use)
     require('plugins/filetree')(use)
@@ -134,4 +146,4 @@ return require('packer').startup(function(use)
     end
 end)
 
---- xx
+---

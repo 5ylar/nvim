@@ -21,6 +21,15 @@ return function(use)
             }
         },
         pickers = {
+            find_files = {
+                theme = "dropdown",
+                previewer = false,
+                -- layout_strategy = "horizontal",
+                layout_config = {
+                    width = 0.9
+                    -- other layout configuration here
+                },
+            }
             -- Default configuration for builtin pickers goes here:
             -- picker_name = {
             --   picker_config_key = value,
@@ -30,6 +39,11 @@ return function(use)
             -- builtin picker
         },
         extensions = {
+            -- file_browser = {
+            --     theme = "dropdown",
+            --     -- disables netrw and use telescope-file-browser in its place
+            --     hijack_netrw = true,
+            -- }
             -- Your extension configuration goes here:
             -- extension_name = {
             --   extension_config_key = value,
@@ -38,9 +52,15 @@ return function(use)
         }
     }
 
+    -- require('telescope.builtin').find_files {
+    --     previewer = false,
+    --     shorten_path = true,
+    --     layout_strategy = "horizontal",
+    --     cwd = require('lspconfig.util').root_pattern(".git")(vim.fn.expand("%:p")),
+    -- }
+
     vim.keymap.set("n", "<leader>p", ":Telescope find_files<CR>")
     vim.keymap.set("n", "<leader>s", ":Telescope live_grep<CR>")
     vim.keymap.set("n", "<leader>d", ":Telescope diagnostics<CR>")
     vim.keymap.set("n", "<leader><Tab>", ":Telescope buffers<CR>")
 end
-
