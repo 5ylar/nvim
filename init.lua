@@ -98,6 +98,17 @@ vim.keymap.set("n", "<C-q>", ":q<CR>")
 vim.keymap.set("n", "<Tab>", ":bnext<CR>")
 vim.keymap.set("n", "<S-Tab>", ":bprev<CR>")
 
+local opts = { noremap = true, silent = true }
+
+local function quickfix()
+    vim.lsp.buf.code_action({
+        filter = function(a) return a.isPreferred end,
+        apply = true
+    })
+end
+
+vim.keymap.set('n', '<leader>qf', quickfix, opts)
+
 vim.cmd [[hi DiffAdd      gui=none    guifg=NONE          guibg=#bada9f]]
 vim.cmd [[hi DiffChange   gui=none    guifg=NONE          guibg=#e5d5ac]]
 vim.cmd [[hi DiffDelete   gui=bold    guifg=#ff8080       guibg=#ffb0b0]]
